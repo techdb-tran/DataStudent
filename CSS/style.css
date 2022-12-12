@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+tr th{
+    width: 150px;
+    height: 30px;
+    border: 1px solid black;
+}
+tr td{
+    width: 150px;
+    height: 20px;
+    border: 1px solid black;
+}
+.error-message{
+    color:red;
+}
+body{
+    text-align: center;
+    background: blanchedalmond;
+}
+h1{
+    margin-top: 20px;
+    color: rgb(99, 99, 181);
+}
+.form #log_out{
+    height: 30px;
+    width: 70px;
+    background: rgb(232, 223, 223);
+    border-radius: 2px;
+    margin: 10px 400px;
+}
+.form{
+    margin-left: 420px;
+    width: 500px;
+    height: 500px;
+    background: rgb(124, 228, 160);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.form #update,.form #save{
+    width: 70px;
+    height: 30px;
+    margin: 10px;
+}

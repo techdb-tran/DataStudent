@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/style1.css">
+</head>
+<body onload="CheckLogin()">
+    <div class="login_card">
+    <h1>Login</h1>
+    <div class="form_input">
+        <label for="name">Username</label>
+        <input type="text" placeholder="name" id="name"></div>
+    <div class="form_input">
+        <label for="password">Password</label>
+        <input type="password" placeholder="password" id="password"></div>
+    <button onclick="Login()">Login</button>
+    </div>
+    <script>
+       const listAccount =[
+       {name: 'admin',
+       password: 'Aa@123456'},
+       {name:'admin2',
+        password: 'admin123admin'}
+    ]
+    let isLogin = !!localStorage.getItem('token')
+    function CheckLogin(){
+        if(isLogin){
+            window.location.href = "index.html"
+        }
+    }
+    function Login(){
+        let name = document.getElementById('name').value
+        let password= document.getElementById('password').value
+        let checkLogin= listAccount.some(value => value.name === name && value.password===password)
+        if(checkLogin){
+            localStorage.setItem('token', name)
+            isLogin = true
+            CheckLogin()
+        } else{
+            alert('wrong username or password!!')
+        }
+    }
+    </script>
+</body>
+</html>
