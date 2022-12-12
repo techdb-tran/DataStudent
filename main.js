@@ -4,6 +4,12 @@ function resetInput(){
     document.getElementById('birthday').value=''
     document.getElementById('phonenumber').value=''
 }
+function validateName(){
+    let name = document.getElementById('name').value
+    if(name.length<5 || name.length>10){
+    document.getElementById('validName').innerText =`Min-Name is 5, Max-Name is 15`}
+    else{document.getElementById('validName').innerText =''}
+}
 function validateAge(){
     const isAdult =()=>{
     let birthday = document.getElementById('birthday').value
@@ -14,24 +20,21 @@ function validateAge(){
     }else{return false}}
     if(isAdult()===false){
         document.getElementById('validBirthday').innerText =`Your age is 18 to 100`}
-    else{document.querySelector('.error-message').innerText =''}
-    
+    else{document.getElementById('validBirthday').innerText =''}  
 }
 
-function validateInput(){
-    let name = document.getElementById('name').value
+function validatePhoneNumber(){
     let phonenumber = document.getElementById('phonenumber').value
-    //validate Name {5,15}
-    const regexName = /^(.|\s){5,15}$/
-    if(!regexName.test(name)){document.getElementById('validName').innerText =`Min-Name is 5, Max-Name is 15`}
-    else{document.querySelector('.error-message').innerText =''}
-    //validate PhoneNumber(10)
     const regexPhonenumber = /^[0-9\-\+]{10,10}$/
     if(!regexPhonenumber.test(phonenumber)){document.getElementById('validPhonenumber').innerText =`Phone number include of 10 number`}
-    else{document.querySelector('.error-message').innerText =''}
+    else{document.getElementById('validPhonenumber').innerText =''}
+}
+function validateInput(){
+    validateName()
+    validateAge()
+    validatePhoneNumber()
 }
 function addNew(){
-    validateAge()
     validateInput()
     let eleForm = document.querySelector('.form')
     let eleError = eleForm.querySelectorAll('.error-message')
@@ -91,7 +94,6 @@ function editStudent(index){
     document.getElementById('update').style.display ='inline-block'
 }
 function update(){
-    validateAge()
     validateInput()
     let listStudent = localStorage.getItem('list-student')?JSON.parse(localStorage.getItem('list-student')):[]
     let index = document.getElementById('index').value
