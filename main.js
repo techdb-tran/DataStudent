@@ -6,8 +6,8 @@ function resetInput(){
 }
 function validateName(){
     let name = document.getElementById('name').value
-    if(name.length<5 || name.length>10){
-    document.getElementById('validName').innerText =`Min-Name is 5, Max-Name is 15`}
+    if(name.length<5 || name.length>15){
+    document.getElementById('validName').innerText =`Name only 5 to 15 characters`}
     else{document.getElementById('validName').innerText =''}
 }
 function validateAge(){
@@ -78,7 +78,8 @@ function renderStudent(){
                 <td>${value.name}</td>
                 <td>${value.birthday}</td>
                 <td>${value.phonenumber}</td>
-                <td><button onclick="editStudent(${index})">Edit</button></td>             
+                <td><button onclick="editStudent(${index})">Edit</button>          
+                <button onclick="deleteStudent(${index})">Del</button></td>          
             </tr>`
     })
     document.getElementById('tableContent').innerHTML =student
@@ -109,6 +110,16 @@ function update(){
     renderStudent();
     resetInput();
 }
+function deleteStudent(index){
+    let listStudent = localStorage.getItem('list-student')?JSON.parse(localStorage.getItem('list-student')):[]
+    if(confirm("are you sure?")){
+        listStudent.splice(index, 1)
+    }
+    localStorage.setItem('list-student', JSON.stringify(listStudent));
+    renderStudent()
+}
 function logOut(){
-    localStorage.removeItem('token')
+    if(confirm("Are you sure Log out?")){
+        localStorage.removeItem('token')
+    }
 }

@@ -23,7 +23,27 @@ body{
 }
 h1{
     margin-top: 20px;
-    color: rgb(99, 99, 181);
+    color:black;
+    font-weight: 800;
+    font-size: 40px;
+    margin: 0 0 0 35%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 450px;
+    animation: type 2s steps(40,end) forwards;
+}
+.form h2{
+    color:black;
+    font-family: 'Fira Code', monospace;
+    font-weight: 800;
+    font-size: 30px;
+    margin: 0 20% 0 35%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 450px;
+    animation: type 3s steps(40,end) forwards;
 }
 .form #log_out{
     height: 30px;
@@ -44,4 +64,17 @@ h1{
     width: 70px;
     height: 30px;
     margin: 10px;
+}
+@keyframes type{
+    0%{
+        width:0;
+    }
+    1%, 99%{
+        border-right: none;
+    }
+}
+@keyframes blink{
+    50%{
+        border-color: transparent;
+    }
 }
