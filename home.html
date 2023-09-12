@@ -5,45 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./CSS/style1.css">
+    <link rel="stylesheet" href="./CSS/style.css">
 </head>
-<body onload="CheckLogin()">
-    <div class="login_card">
-    <h1>Login</h1>
-    <div class="form_input">
-        <label for="name">Username</label>
-        <input type="text" placeholder="name" id="name"></div>
-    <div class="form_input">
-        <label for="password">Password</label>
-        <input type="password" placeholder="password" id="password"></div>
-    <button onclick="Login()">Login</button>
+<body>
+    <h1>Student management</h1>
+    <div class="form"> 
+        <button id="log_out" onclick="logOut()"><a href="home.html">Log-out</a></button>
+        <h2>INFORMATION</h2>
+        <div class="form-group">
+            <input id="index" type="hidden">
+        </div>
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input id="name" type="text" class="form-input" placeholder="Your Name...">
+            <div id="validName" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="birthday">Birthday: </label>
+            <input id="birthday" type="date" class="form-input">
+            <div id='validBirthday' class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label for="phonenumber">Phone Number: </label>
+            <input id="phonenumber" type="number" class="form-input" placeholder="Your Phone Number...">
+            <div id='validPhonenumber' class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <input id="index" type="hidden" class="form-input">
+        </div>
+        <button id="save" onclick="addNew()">Add New</button>
+        <button id="update" style="display: none;" onclick="update()">Update</button>
+        <table id="tableContent">
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>BIRTHDAY</th>
+                <th>PHONE NUMBER</th>
+                <th>ACTION</th>
+            </tr>
+        </table>
     </div>
-    <script>
-       const listAccount =[
-       {name: 'penthunhat',
-       password: '1999'},
-       {name:'penthuhai',
-        password: '4869'}
-    ]
-    let isLogin = !!localStorage.getItem('token')
-    function CheckLogin(){
-        if(isLogin){
-            window.location.href = "index.html"
-            alert('LOGGED IN SUCCESSFULLY!')
-        }
-    }
-    function Login(){
-        let name = document.getElementById('name').value
-        let password= document.getElementById('password').value
-        let checkLogin= listAccount.some(value => value.name === name && value.password===password)
-        if(checkLogin){
-            localStorage.setItem('token', name)
-            isLogin = true
-            CheckLogin()
-        } else{
-            alert('wrong username or password!!')
-        }
-    }
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
